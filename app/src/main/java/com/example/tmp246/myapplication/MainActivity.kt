@@ -5,8 +5,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.Gravity
-import android.widget.LinearLayout
 import com.example.tmp246.myapplication.entity.Computer
 import com.example.tmp246.myapplication.request.Request
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,29 +37,25 @@ class MainActivity : AppCompatActivity() {
 
     fun createDialogView() {
         val dialog: Dialog = Dialog(activity_main_rl.context, R.style.AppTheme)
-        dialog.setContentView(activity_main_rl.context.linearLayout {
-            this.gravity = Gravity.CENTER
-            this.orientation = LinearLayout.HORIZONTAL
-            this.backgroundColor = Color.parseColor("#000fff")
-            this.alpha = 1f
-            textView {
-                this.text = "我是dialog里面的text"
-                this.textColor = Color.parseColor("#ff00ff")
-                this.backgroundColor = Color.parseColor("#ffffff")
-                onClick {
-                    Log.i("zp", "click now")
-                    dialog.dismiss()
-                }
-            }
-            textView {
-                text = "text2"
-                textColor = Color.parseColor("#fff000")
-                onLongClick {
-                    Log.i("zp", "onlongclick")
-                    false
-                }
-            }
-        })
+        dialog.setContentView(activity_main_rl.context.
+                relativeLayout {
+                    textView {
+                        text = "我是dialog里面的text"
+                        backgroundColor = Color.parseColor("#ffffff")
+                        onClick {
+                            tv1.text = "click now"
+                            dialog.dismiss()
+                        }
+                    }
+                    textView {
+                        text = "text2"
+                        textColor = Color.parseColor("#fff000")
+                        onLongClick {
+                            Log.i("zp", "onlongclick")
+                            false
+                        }
+                    }
+                })
         dialog.show()
     }
 }
