@@ -6,9 +6,7 @@
 /build
 /captures
 .externalNativeBuild
-*.properties
 *.apk
 *.class
 androidTest
 test
-!/local.properties
